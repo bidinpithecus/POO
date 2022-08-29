@@ -6,32 +6,16 @@ public class Animal {
     private String especie;
     private String descricao;
 
-    public String getNome() {
-        return nome;
-    }
-
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public Dono getDono() {
-        return dono;
     }
 
     public void setDono(Dono dono) {
         this.dono = dono;
     }
 
-    public String getEspecie() {
-        return especie;
-    }
-
     public void setEspecie(String especie) {
         this.especie = especie;
-    }
-
-    public String getDescricao() {
-        return descricao;
     }
 
     public void setDescricao(String descricao) {
@@ -40,10 +24,16 @@ public class Animal {
 
     @Override
     public String toString() {
-        return "Animal{" +
-                "nome='" + nome + '\'' +
-                ", especie='" + especie + '\'' +
-                ", descricao='" + descricao + '\'' +
-                '}';
+        String string =
+                "Nome: " + this.nome +
+                "\nEspecie: " + this.especie +
+                "\nDescricao: " + this.descricao;
+        string += '\n';
+        if (this.dono == null) {
+            string += "Dono ainda não cadastrado\n";
+        } else {
+            string += "Dono:\n" + this.dono.toString();
+        }
+        return string;
     }
 }

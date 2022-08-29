@@ -4,33 +4,22 @@ public class Veterinario {
     private String nome;
     private double salario;
     private Endereco endereco;
-    private Animal[] animais;
-    private int numMaxAnimais;
+    private final Animal[] animais;
+    private final int numMaxAnimais;
     private int numAnimais;
 
     public Veterinario(int numMaxAnimais) {
         this.numMaxAnimais = numMaxAnimais;
         animais = new Animal[this.numMaxAnimais];
-    }
-
-    public String getNome() {
-        return nome;
+        this.numAnimais = 0;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public double getSalario() {
-        return salario;
-    }
-
     public void setSalario(double salario) {
         this.salario = salario;
-    }
-
-    public Endereco getEndereco() {
-        return endereco;
     }
 
     public void setEndereco(Endereco endereco) {
@@ -51,8 +40,26 @@ public class Veterinario {
         return numAnimais;
     }
 
-    public int getNumMaxAnimais() {
-        return numMaxAnimais;
+    @Override
+    public String toString() {
+        StringBuilder string = new StringBuilder("Nome: " + this.nome + "\nSalário: R$" + this.salario);
+        string.append("\n");
+        if (this.endereco == null) {
+            string.append("Endereço não cadastrado");
+        } else {
+            string.append("Endereço:\n").append(endereco.toString()).append('\n');
+        }
+        string.append("\n");
+        if (this.numAnimais > 0) {
+            string.append("Animais:\n");
+            for (int i = 0; i < this.numAnimais; i++) {
+                string.append("Animal #").append(i).append('\n').append(animais[i].toString());
+            }
+        } else {
+            string.append("Nenhum animal cadastrado ainda");
+        }
+
+        return string.toString();
     }
 
 }

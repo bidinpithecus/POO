@@ -9,9 +9,9 @@ import AulaPratica02.Exercicio02.dados.Veterinario;
 
 public class SistemaPetShop {
     private static int numVeterinarios = 0;
-    private static int maxVeterinarios = 10;
-    private static Veterinario[] veterinarios = new Veterinario[maxVeterinarios];
-    private static Scanner input = new Scanner(System.in);
+    private static final int maxVeterinarios = 50;
+    private static final Veterinario[] veterinarios = new Veterinario[maxVeterinarios];
+    private static final Scanner input = new Scanner(System.in);
 
     public static void printMenu() {
         System.out.println("Escolha uma opção:");
@@ -24,7 +24,7 @@ public class SistemaPetShop {
         System.out.println("6 - Cadastrar Dono");
     }
 
-    public static void Main(String[] args) {
+    public static void main(String[] args) {
         int option = -1;
 
         while (option != 0) {
@@ -37,19 +37,39 @@ public class SistemaPetShop {
                     cadastrarVeterinario();
                     break;
                 case 2:
-                    mostrarVeterinarios();
+                    if (numVeterinarios > 0) {
+                        mostrarVeterinarios();
+                    } else {
+                        System.out.println("Nenhum veterinário cadastrado ainda.");
+                    }
                     break;
                 case 3:
-                    cadastrarEnderecoVeterinario();
+                    if (numVeterinarios > 0) {
+                        cadastrarEnderecoVeterinario();
+                    } else {
+                        System.out.println("Nenhum veterinário cadastrado ainda.");
+                    }
                     break;
                 case 4:
-                    cadastrarAnimal();
+                    if (numVeterinarios > 0) {
+                        cadastrarAnimal();
+                    } else {
+                        System.out.println("Nenhum veterinário cadastrado ainda.");
+                    }
                     break;
                 case 5:
-                    mostrarAnimais();
+                    if (numVeterinarios > 0) {
+                        mostrarAnimais();
+                    } else {
+                        System.out.println("Nenhum veterinário cadastrado ainda.");
+                    }
                     break;
                 case 6:
-                    cadastrarDono();
+                    if (numVeterinarios > 0) {
+                        cadastrarDono();
+                    } else {
+                        System.out.println("Nenhum veterinário cadastrado ainda.");
+                    }
                     break;
                 default:
                     System.out.println("Opção inválida, tente novamente!");
@@ -60,7 +80,7 @@ public class SistemaPetShop {
 
     public static void cadastrarVeterinario() {
         if (numVeterinarios < maxVeterinarios) {
-            Veterinario veterinario = new Veterinario(10);
+            Veterinario veterinario = new Veterinario(50);
 
             System.out.println("Insira o nome do novo veterinário");
             veterinario.setNome(input.next());
@@ -74,6 +94,10 @@ public class SistemaPetShop {
     }
 
     public static void mostrarVeterinarios() {
+        if (numVeterinarios <= 0) {
+            System.out.println("Nenhum veterinário cadastrado ainda.");
+        }
+        System.out.println();
         for (int i = 0; i < numVeterinarios; i++) {
             System.out.println("Veterinário #" + i);
             System.out.println(veterinarios[i].toString() + '\n');
@@ -86,26 +110,12 @@ public class SistemaPetShop {
         mostrarVeterinarios();
         indexVet = input.nextInt();
 
-        if (indexVet < 0 || indexVet > numVeterinarios) {
+        if (indexVet < 0 || indexVet > (numVeterinarios - 1)) {
             System.out.println("Código de veterinário inválido");
             indexVet = -1;
         }
 
         return indexVet;
-    }
-
-    public static int escolherAnimal(Veterinario veterinario) {
-        int indexAnimal;
-        System.out.println("Aqui está a lista de animais cadastrados a este veterinário. Escolha-o pelo seu código.");
-        mostrarAnimais();
-        indexAnimal = input.nextInt();
-
-        if (indexAnimal < 0 || indexAnimal > veterinario.getNumAnimais()) {
-            System.out.println("Código de animal inválido");
-            indexAnimal = -1;
-        }
-
-        return indexAnimal;
     }
 
     public static Endereco novoEndereco() {
@@ -154,18 +164,36 @@ public class SistemaPetShop {
     public static void mostrarAnimais() {
         int indexVet = escolherVeterinario();
 
-        for (int i = 0; i < veterinarios[indexVet].getNumAnimais(); i++) {
-            System.out.println("Animal #" + i);
-            System.out.println(veterinarios[indexVet].getAnimais()[i].toString());
+        if(veterinarios[indexVet].getNumAnimais() <= 0) {
+            System.out.println("O veterinário selecionado não possui nenhum animal");
+        } else {
+            for (int i = 0; i < veterinarios[indexVet].getNumAnimais(); i++) {
+                System.out.println("Animal #" + i);
+                System.out.println(veterinarios[indexVet].getAnimais()[i].toString());
+            }
         }
     }
 
     public static void cadastrarDono() {
-        int indexVet = escolherVeterinario();
-        int indexAnimal = -1;
-        if (indexVet >= 0) {
-            indexAnimal = escolherAnimal(veterinarios[escolherVeterinario()]);
+        int indexAnimal;
+        int indexVet;
+        System.out.println("Escolha o veterinário:\n");
+
+        for (int i = 0; i < numVeterinarios; i++) {
+            if (veterinarios[i].getNumAnimais() > 0) {
+                System.out.println("Veterinário #" + i);
+                System.out.println(veterinarios[i].toString());
+            }
         }
+
+        // should check if the index from input is a valid one
+        indexVet = input.nextInt();
+        for (int i = 0; i < veterinarios[indexVet].getNumAnimais(); i++) {
+            System.out.println("Animal #" + i);
+            System.out.println(veterinarios[indexVet].getAnimais()[i].toString());
+        }
+
+        indexAnimal = input.nextInt();
 
         if (indexAnimal > -1) {
             Dono dono = new Dono();

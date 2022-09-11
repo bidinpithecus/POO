@@ -58,8 +58,4 @@ public class Endereco {
         return rua.equals(endereco.rua) && numero.equals(endereco.numero) && bairro.equals(endereco.bairro) && cidade.equals(endereco.cidade) && estado.equals(endereco.estado) && cep.equals(endereco.cep);
     }
 
-    @Override
-    public int hashCode() {
-        return 0;
-    }
 }

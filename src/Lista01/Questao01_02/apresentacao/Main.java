@@ -46,7 +46,15 @@ public class Main {
         sistema.setVeiculo(veiculo2);
         sistema.setCliente(cliente2);
 
-        System.out.println(sistema.toString());
+        System.out.println("~~~ Veículos ~~~");
+        for (Veiculo veiculo : sistema.getVeiculos()) {
+            System.out.println(veiculo);
+        }
+
+        System.out.println("\n~~~ Clientes ~~~");
+        for (Cliente cliente : sistema.getClientes()) {
+            System.out.println(cliente);
+        }
     }
 
 }

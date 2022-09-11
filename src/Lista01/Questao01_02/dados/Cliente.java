@@ -1,7 +1,5 @@
 package Lista01.Questao01_02.dados;
 
-import java.util.Objects;
-
 public class Cliente {
     private String nome;
     private String cpf;
@@ -11,7 +9,7 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(String nome, String cpf, Endereco enderco, Veiculo veiculoAlugado) {
+    public Cliente(String nome, String cpf, Endereco endereco, Veiculo veiculoAlugado) {
         this.nome = nome;
         this.cpf = cpf;
         this.endereco = endereco;
@@ -51,7 +49,7 @@ public class Cliente {
     }
 
     public String toString() {
-        return "Nome: " + this.nome + ", Cpf: " + this.cpf + ", Endereço: " + this.endereco.toString()+ "Veículo alugado: " + veiculoAlugado.toString();
+        return "Nome: " + this.nome + ", Cpf: " + this.cpf + ", Endereço: " + this.endereco.toString()/* + ", Veículo alugado: " + veiculoAlugado.toString()*/;
     }
 
     @Override

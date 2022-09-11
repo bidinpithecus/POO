@@ -16,32 +16,16 @@ public class Cliente {
         this.veiculoAlugado = veiculoAlugado;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public String getCpf() {
-        return cpf;
     }
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
-    public Veiculo getVeiculoAlugado() {
-        return veiculoAlugado;
-    }
-
     public void setVeiculoAlugado(Veiculo veiculoAlugado) {
         this.veiculoAlugado = veiculoAlugado;
-    }
-
-    public Endereco getEndereco() {
-        return endereco;
     }
 
     public void setEndereco(Endereco endereco) {

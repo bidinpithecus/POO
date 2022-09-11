@@ -19,28 +19,12 @@ public class Negocio {
         this.veiculos[this.numVeiculos++] = veiculo;
     }
 
-    public int getNumVeiculos() {
-        return numVeiculos;
-    }
-
-    public void setNumVeiculos(int numVeiculos) {
-        this.numVeiculos = numVeiculos;
-    }
-
     public Cliente[] getClientes() {
         return clientes;
     }
 
     public void setCliente(Cliente cliente) {
         this.clientes[this.numClientes++] = cliente;
-    }
-
-    public int getNumClientes() {
-        return numClientes;
-    }
-
-    public void setNumClientes(int numClientes) {
-        this.numClientes = numClientes;
     }
 
     @Override

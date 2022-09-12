@@ -4,10 +4,6 @@ public class Aquario extends Viveiro {
 	private float altura;
 	private float temperatura;
 
-	public Aquario(int maxAnimais) {
-		super(maxAnimais);
-	}
-
 	public float getAltura() {
 		return altura;
 	}
@@ -39,7 +35,7 @@ public class Aquario extends Viveiro {
 			} else {
 				return false;
 			}
-			animais[numAnimais++] = animal;
+			animais.add(animal);
 			return true;
 		} else {
 			return false;

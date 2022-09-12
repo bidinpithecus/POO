@@ -1,15 +1,15 @@
 package AulaPratica04.dados;
 
+import java.util.ArrayList;
+
 public class Viveiro {
 	protected String nome;
 	protected float comprimento;
 	protected float largura;
-	protected Animal[] animais;
-	protected int numAnimais;
+	protected ArrayList<Animal> animais;
 
-	public Viveiro(int maxAnimais) {
-		this.animais = new Animal[maxAnimais];
-		numAnimais = 0;
+	public Viveiro() {
+		this.animais = new ArrayList<>();
 	}
 
 	public String getNome() {
@@ -36,20 +36,12 @@ public class Viveiro {
 		this.largura = largura;
 	}
 
-	public Animal[] getAnimais() {
+	public ArrayList<Animal> getAnimais() {
 		return animais;
 	}
 
-	public void setAnimais(Animal[] animais) {
+	public void setAnimais(ArrayList<Animal> animais) {
 		this.animais = animais;
-	}
-
-	public int getNumAnimais() {
-		return numAnimais;
-	}
-
-	public void setNumAnimais(int numAnimais) {
-		this.numAnimais = numAnimais;
 	}
 
 	public float calculaEspaco() {
@@ -59,8 +51,8 @@ public class Viveiro {
 	private float espacoOcupado() {
 		float area = 0;
 
-		for (int i = 0; i < numAnimais; i++) {
-			area += animais[i].calculaEspeacoOcupado();
+		for (Animal animal : this.animais) {
+			area += animal.calculaEspeacoOcupado();
 		}
 		return area;
 	}
@@ -71,7 +63,7 @@ public class Viveiro {
 
 	public Boolean adicionarAnimal(Animal animal) {
 		if (espacoDisponivel() >= animal.calculaEspeacoOcupado() * 0.7) {
-			animais[numAnimais++] = animal;
+			animais.add(animal);
 			return true;
 		}
 		return false;
@@ -85,8 +77,8 @@ public class Viveiro {
 			string.append("Viveiro: ");
 		}
 		string.append(nome).append(", ");
-		for (int i = 0; i < numAnimais; i++) {
-			string.append(animais[i].toString()).append(", ");
+		for (Animal animal : this.animais) {
+			string.append(animal.toString()).append(", ");
 		}
 		return string.toString();
 	}

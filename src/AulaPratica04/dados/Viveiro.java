@@ -20,28 +20,12 @@ public class Viveiro {
 		this.nome = nome;
 	}
 
-	public float getComprimento() {
-		return comprimento;
-	}
-
 	public void setComprimento(float comprimento) {
 		this.comprimento = comprimento;
 	}
 
-	public float getLargura() {
-		return largura;
-	}
-
 	public void setLargura(float largura) {
 		this.largura = largura;
-	}
-
-	public ArrayList<Animal> getAnimais() {
-		return animais;
-	}
-
-	public void setAnimais(ArrayList<Animal> animais) {
-		this.animais = animais;
 	}
 
 	public float calculaEspaco() {

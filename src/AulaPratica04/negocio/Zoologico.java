@@ -18,10 +18,6 @@ public class Zoologico {
         return viveiros;
     }
 
-    public void setViveiros(ArrayList<Viveiro> viveiros) {
-        this.viveiros = viveiros;
-    }
-
     public ArrayList<Viveiro> getOnlyViveiros() {
         ArrayList<Viveiro> onlyViveiros = new ArrayList<>();
         if (viveiros.size() > 0) {
@@ -48,10 +44,6 @@ public class Zoologico {
 
     public ArrayList<Animal> getAnimais() {
         return animais;
-    }
-
-    public void setAnimais(ArrayList<Animal> animais) {
-        this.animais = animais;
     }
 
     public void cadastrarViveiro(Viveiro viveiro) {

@@ -3,7 +3,6 @@ package AulaPratica04.apresentacao;
 import AulaPratica04.dados.*;
 import AulaPratica04.negocio.Zoologico;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {

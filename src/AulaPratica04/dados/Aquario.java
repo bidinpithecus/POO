@@ -25,7 +25,7 @@ public class Aquario extends Viveiro {
 	}
 
 	public Boolean adicionaAnimal(Animal animal) {
-		if (espacoDisponivel() >= (animal.calculaEspeacoOcupado() * 0.7)) {
+		if (espacoDisponivel() >= (animal.calculaEspacoOcupado() * 0.7)) {
 			if (animal instanceof Peixe) {
 				Peixe peixe = (Peixe) animal;
 

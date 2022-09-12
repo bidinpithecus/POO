@@ -52,7 +52,7 @@ public class Viveiro {
 		float area = 0;
 
 		for (Animal animal : this.animais) {
-			area += animal.calculaEspeacoOcupado();
+			area += animal.calculaEspacoOcupado();
 		}
 		return area;
 	}
@@ -62,7 +62,7 @@ public class Viveiro {
 	}
 
 	public Boolean adicionarAnimal(Animal animal) {
-		if (espacoDisponivel() >= animal.calculaEspeacoOcupado() * 0.7) {
+		if (espacoDisponivel() >= animal.calculaEspacoOcupado() * 0.7) {
 			animais.add(animal);
 			return true;
 		}
@@ -77,6 +77,11 @@ public class Viveiro {
 			string.append("Viveiro: ");
 		}
 		string.append(nome).append(", ");
+		if (this instanceof Aquario) {
+			string.append(". Peixes alocados: ");
+		} else {
+			string.append(". Animais alocados: ");
+		}
 		for (Animal animal : this.animais) {
 			string.append(animal.toString()).append(", ");
 		}

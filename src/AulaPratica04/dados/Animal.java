@@ -65,7 +65,7 @@ public class Animal {
 		this.altura = altura;
 	}
 
-	public float calculaEspeacoOcupado() {
+	public float calculaEspacoOcupado() {
 		return comprimento * largura;
 	}
 

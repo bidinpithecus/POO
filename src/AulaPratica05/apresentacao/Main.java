@@ -3,6 +3,7 @@ package AulaPratica05.apresentacao;
 import AulaPratica05.dados.Contato;
 import AulaPratica05.negocio.ListaTelefonica;
 
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Main {
@@ -21,7 +22,7 @@ public class Main {
             } else if (opcao == 2) {
                 removerContato();
             } else if (opcao == 3) {
-                buscarContatos();
+                mostrarContatos();
             } else if (opcao == 0) {
                 System.out.println("Encerrando.");
             } else {
@@ -50,10 +51,71 @@ public class Main {
     }
 
     public static void removerContato() {
+        System.out.println("Digite a inicial do contato a ser removido:");
+        char letra = (char) input.nextByte();
+
+        if (listaTelefonica.buscarContatos(letra).size() > 0) {
+            System.out.println("Qual dos contatos a seguir deseja que seja removido?");
+            System.out.println("Insira seu código:");
+            exibirContatos(letra);
+            int index = input.nextInt();
+
+            if (index < listaTelefonica.buscarContatos(letra).size()) {
+                listaTelefonica.removerContato(listaTelefonica.buscarContatos(letra).remove(index));
+                System.out.println("Contato removido.");
+            } else {
+                System.out.println("Código não reconhecido.");
+            }
+        } else {
+            System.out.println("Não há contatos para que sejam removidos.");
+        }
+
 
     }
 
-    public static void buscarContatos() {
-        
+    public static void mostrarContatos() {
+        System.out.println("Deseja:");
+        System.out.println("0 - Voltar");
+        System.out.println("1 - Listar todos os contatos");
+        System.out.println("2 - Filtrar algum");
+        int opcao = input.nextInt();
+
+        if (opcao == 0) {
+            System.out.println("Retornando");
+        } else if (opcao == 1) {
+            System.out.println("Lista:");
+            exibirContatos();
+        } else if (opcao == 2) {
+            System.out.println("Digite a inicial do contato a ser buscado:");
+            char letra = (char) input.nextByte();
+            exibirContatos(letra);
+        } else {
+            System.out.println("Comando inválido.");
+        }
     }
+
+    public static void exibirContatos(char letra) {
+        if (listaTelefonica.buscarContatos(letra).size() > 0) {
+            for (int i = 0; i < listaTelefonica.buscarContatos(letra).size(); i++) {
+                System.out.println("Contato# " + i + '\n' + listaTelefonica.buscarContatos(letra).get(i));
+            }
+        } else {
+            System.out.println("Não há contatos que iniciam com " + letra);
+        }
+    }
+
+    public static void exibirContatos() {
+        if (listaTelefonica.buscarContatos().size() > 0) {
+            listaTelefonica.buscarContatos().forEach((chave, lista) -> {
+                System.out.println(chave + ":\n\t");
+
+            for (Contato contato : lista) {
+                System.out.println(contato);
+            }
+            });
+        } else {
+            System.out.println("Não há contatos na lista.");
+        }
+    }
+
 }

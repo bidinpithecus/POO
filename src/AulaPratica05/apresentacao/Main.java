@@ -3,7 +3,6 @@ package AulaPratica05.apresentacao;
 import AulaPratica05.dados.Contato;
 import AulaPratica05.negocio.ListaTelefonica;
 
-import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Main {
@@ -43,8 +42,19 @@ public class Main {
         Contato contato = new Contato();
         System.out.println("Digite o nome do contato:");
         input.nextLine();
-        contato.setNome(input.next());
+        String tempNome = input.next();
+        while (true) {
+            if (tempNome.toUpperCase().charAt(0) < 65 || tempNome.toUpperCase().charAt(0) > 90) {
+                System.out.println("Primeiro caractere do nome deve ser uma letra.");
+                System.out.println("Tente novamente:");
+                tempNome = input.next();
+            } else {
+                break;
+            }
+        }
+        contato.setNome(tempNome);
         System.out.println("Agora o telefone do contato:");
+        input.nextLine();
         contato.setTelefone(input.nextLine());
 
         listaTelefonica.adicionaContato(contato);
@@ -52,8 +62,11 @@ public class Main {
 
     public static void removerContato() {
         System.out.println("Digite a inicial do contato a ser removido:");
-        char letra = (char) input.nextByte();
-
+        char letra = input.next().toUpperCase().charAt(0);
+        if (!(letra >= 65 && letra <= 90)) {
+            System.out.println("Letra inválida.");
+            return;
+        }
         if (listaTelefonica.buscarContatos(letra).size() > 0) {
             System.out.println("Qual dos contatos a seguir deseja que seja removido?");
             System.out.println("Insira seu código:");
@@ -69,8 +82,6 @@ public class Main {
         } else {
             System.out.println("Não há contatos para que sejam removidos.");
         }
-
-
     }
 
     public static void mostrarContatos() {
@@ -87,8 +98,12 @@ public class Main {
             exibirContatos();
         } else if (opcao == 2) {
             System.out.println("Digite a inicial do contato a ser buscado:");
-            char letra = (char) input.nextByte();
-            exibirContatos(letra);
+            char letra = input.next().toUpperCase().charAt(0);
+            if (letra >= 65 && letra <= 90) {
+                exibirContatos(letra);
+            } else {
+                System.out.println("Letra inválida.");
+            }
         } else {
             System.out.println("Comando inválido.");
         }
@@ -107,11 +122,11 @@ public class Main {
     public static void exibirContatos() {
         if (listaTelefonica.buscarContatos().size() > 0) {
             listaTelefonica.buscarContatos().forEach((chave, lista) -> {
-                System.out.println(chave + ":\n\t");
+                System.out.println(chave + ":");
 
-            for (Contato contato : lista) {
-                System.out.println(contato);
-            }
+                for (Contato contato : lista) {
+                    System.out.println("\t" + contato + ';');
+                }
             });
         } else {
             System.out.println("Não há contatos na lista.");

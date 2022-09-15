@@ -2,10 +2,17 @@ package AulaPratica06.dados;
 
 public class Fatoriais extends Gerador {
     public void gerar(int n) {
-        int fat = 1;
-        for (int i = n; i < 0; i--) {
-            fat *= i;
+        int fat;
+        for (int i = 1; i <= n; i++) {
+            fat = 1;
+            for (int j = 2; j <= i; j++) {
+                fat *= j;
+            }
+            if (fat < n) {
+                sequencia.add(fat);
+            } else {
+                return;
+            }
         }
-        sequencia.add(fat);
     }
 }

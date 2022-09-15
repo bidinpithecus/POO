@@ -5,7 +5,7 @@ import AulaPratica05.dados.Contato;
 import java.util.*;
 
 public class ListaTelefonica {
-    private Map<Character, List<Contato>> contatos = new HashMap<Character, List<Contato>>();
+    private Map<Character, List<Contato>> contatos = new HashMap<>();
 
     public ListaTelefonica() {
         for (char i = 65; i < 91; i++) {

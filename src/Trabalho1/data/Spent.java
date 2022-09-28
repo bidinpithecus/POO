@@ -3,19 +3,19 @@ package Trabalho1.data;
 import java.util.Calendar;
 
 public class Spent {
-    private String id;
+    private int index;
     private String name;
     private Calendar date;
     private String description;
     private float value;
     private Category category;
 
-    public String getId() {
-        return id;
+    public int getIndex() {
+        return index;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setIndex(int index) {
+        this.index = index;
     }
 
     public String getName() {

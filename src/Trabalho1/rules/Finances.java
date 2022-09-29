@@ -20,6 +20,9 @@ public class Finances {
     }
 
     // https://www.baeldung.com/java-password-hashing
+    // for this first part of the work, it will going to be the simplest login system
+    // with the database integration, a better a safer system is going to be implemented
+    // in memory won't be as efficient
     public boolean login(String login, String password) {
         for (User user : users.keySet()) {
             if (user.getLogin().equals(login) && user.getPassword().equals(password)) {

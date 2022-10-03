@@ -1,4 +1,4 @@
-package Lista02.Questao02.dados;
+package Lista02.Questao02_03.dados;
 
 public enum Quadrante {
 	PRIMEIRO,

@@ -1,0 +1,11 @@
+package AulaPratica07.dados;
+
+public interface ISequencia {
+    public int sortear();
+    public long somatorio();
+    public float mediaAritmetica();
+    public float mediaGeometrica();
+    public float variancia();
+    public float desvioPadrao();
+    public float amplitude();
+}

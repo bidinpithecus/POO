@@ -15,6 +15,10 @@ public abstract class Gerador implements ISequencia {
         return sequencia;
     }
 
+    public void setSequencia(List<Integer> sequencia) {
+        this.sequencia = sequencia;
+    }
+
     public int sortear() {
         // utilize random
         return sequencia.get(random.nextInt(sequencia.size() - 1));

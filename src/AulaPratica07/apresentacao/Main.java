@@ -1,62 +1,97 @@
 package AulaPratica07.apresentacao;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
 import AulaPratica07.dados.*;
 
 public class Main {
 
     public static void main(String[] args) {
-        Map<String, List<Integer>> sequencias = new HashMap<>();
-        Gerador gerador;
+        Map<String, Gerador> sequencias = new HashMap<>();
         int num = 10;
+        List<String> geradores = new ArrayList<>();
+        geradores.add("Primos");
+        geradores.add("Fatoriais");
+        geradores.add("Abundantes");
+        geradores.add("Quadrados");
+        geradores.add("Fibonacci");
+        geradores.add("Naturais");
+//        geradores.add("Perfeitos");
 
-        gerador = new Fibonacci();
-        gerador.gerar(num);
-        sequencias.put("Fibonacci", gerador.getSequencia());
+        Fibonacci fibonacci = new Fibonacci();
+        fibonacci.gerar(num);
+        sequencias.put("Fibonacci", fibonacci);
 
-        gerador = new Fatoriais();
-        gerador.gerar(num);
-        sequencias.put("Fatoriais", gerador.getSequencia());
+        Fatoriais fatoriais = new Fatoriais();
+        fatoriais.gerar(num);
+        sequencias.put("Fatoriais", fatoriais);
 
-        gerador = new Naturais();
-        gerador.gerar(num);
-        sequencias.put("Naturais", gerador.getSequencia());
+        Naturais naturais = new Naturais();
+        naturais.gerar(num);
+        sequencias.put("Naturais", naturais);
 
-        gerador = new Quadrados();
-        gerador.gerar(num);
-        sequencias.put("Quadrados", gerador.getSequencia());
+        Quadrados quadrados = new Quadrados();
+        quadrados.gerar(num);
+        sequencias.put("Quadrados", quadrados);
 
-        gerador = new NumerosPrimos();
-        gerador.gerar(num);
-        sequencias.put("Primos", gerador.getSequencia());
+        NumerosPrimos primos = new NumerosPrimos();
+        primos.gerar(num);
+        sequencias.put("Primos", primos);
 
+        // Comentado pois não consegue gerar 10 numeros perfeitos em um tempo viável, pois este demanda muito processamento
         /*
-        gerador = new Perfeitos();
-        gerador.gerar(num);
-        sequencias.put("Perfeitos", gerador.getSequencia());
-         */
+        * Perfeitos perfeitos = new Perfeitos();
+        * perfeitos.gerar(num);
+        * sequencias.put("Perfeitos", perfeitos);
+        */
 
-        gerador = new Abundantes();
-        gerador.gerar(num);
-        sequencias.put("Abundantes", gerador.getSequencia());
+        Abundantes abundantes = new Abundantes();
+        abundantes.gerar(num);
+        sequencias.put("Abundantes", abundantes);
 
         sequencias.forEach((string, sequencia) -> {
             System.out.println(string + ":");
-            System.out.println(sequencia);
+            System.out.println(sequencia.getSequencia());
         });
+        System.out.println("");
 
-        Map<String, List<Integer>> variacoes = new HashMap<>();
+        List<Long> listLong = new ArrayList<>();
+        List<Double> listDouble = new ArrayList<>();
 
-        variacoes.put("Somatorio", new ArrayList<>());
-        variacoes.put("Media Aritmetica", new ArrayList<>());
-        variacoes.put("Media Geometrica", new ArrayList<>());
-        variacoes.put("Variancia", new ArrayList<>());
-        variacoes.put("Desvio Padrao", new ArrayList<>());
-        variacoes.put("Amplitude", new ArrayList<>());
+        sequencias.forEach((string, sequencia) -> listLong.add(sequencia.somatorio()));
+        System.out.println("Somatorio: ");
+        System.out.println(listLong);
+        System.out.println("Max:" + "\n" + geradores.get(listLong.indexOf(Collections.max(listLong))));
+        listLong.clear();
+
+        sequencias.forEach((string, sequencia) -> listDouble.add(sequencia.mediaAritmetica()));
+        System.out.println("Media Aritmética: ");
+        System.out.println(listDouble);
+        System.out.println("Max:" + "\n" + geradores.get(listDouble.indexOf(Collections.max(listDouble))) + "\n");
+        listDouble.clear();
+
+        sequencias.forEach((string, sequencia) -> listDouble.add(sequencia.mediaGeometrica()));
+        System.out.println("Media Geométrica: ");
+        System.out.println(listDouble);
+        System.out.println("Max:" + "\n" + geradores.get(listDouble.indexOf(Collections.max(listDouble))) + "\n");
+        listDouble.clear();
+
+        sequencias.forEach((string, sequencia) -> listDouble.add(sequencia.variancia()));
+        System.out.println("Variância: ");
+        System.out.println(listDouble);
+        System.out.println("Max:" + "\n" + geradores.get(listDouble.indexOf(Collections.max(listDouble))) + "\n");
+        listDouble.clear();
+
+        sequencias.forEach((string, sequencia) -> listDouble.add(sequencia.desvioPadrao()));
+        System.out.println("Desvio Padrão: ");
+        System.out.println(listDouble);
+        System.out.println("Max:" + "\n" + geradores.get(listDouble.indexOf(Collections.max(listDouble))) + "\n");
+        listDouble.clear();
+
+        sequencias.forEach((string, sequencia) -> listLong.add(sequencia.amplitude()));
+        System.out.println("Amplitude: ");
+        System.out.println(listLong);
+        System.out.println("Max:" + "\n" + geradores.get(listLong.indexOf(Collections.max(listLong))));
     }
-
 
 }

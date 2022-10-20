@@ -17,8 +17,8 @@ public class Main {
         listOp.add(new Soma());
 
         for (IOperacaoInteira op : listOp) {
-            int num1 = random.nextInt(1,200);
-            int num2 = random.nextInt(1,200);
+            int num1 = random.nextInt(200) + 1;
+            int num2 = random.nextInt(200) + 1;
             System.out.print(num1);
             if (op instanceof Mdc) {
                 System.out.print(" MDC ");

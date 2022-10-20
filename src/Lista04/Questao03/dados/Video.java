@@ -1,17 +1,23 @@
 package Lista04.Questao03.dados;
 
+import Lista04.Questao03.exceptions.NomeInvalidoException;
+
 public class Video extends Arquivo {
     private Qualidade qualidade;
 
-    public Video(String nome) {
+    public Video(String nome) throws NomeInvalidoException {
         super(nome);
     }
 
-    public Video(String nome, String extensao) {
-        super(nome, extensao);
+    public Qualidade getQualidade() {
+        return qualidade;
+    }
+
+    public void setQualidade(Qualidade qualidade) {
+        this.qualidade = qualidade;
     }
 
     public String toString() {
-        return "";
+        return super.toString() + "\tQualidade: " + this.qualidade;
     }
 }

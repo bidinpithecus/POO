@@ -6,7 +6,7 @@ import Lista04.Questao02.excptions.ProcessoSemJuizException;
 import Lista04.Questao02.negocio.SistemaProcessos;
 
 public class Main {
-    public static SistemaProcessos sistemaProcessos = new SistemaProcessos();
+    public static final SistemaProcessos sistemaProcessos = new SistemaProcessos();
 
     public static void main(String[] args) {
         Juiz juiz1 = new Juiz(5);
@@ -46,6 +46,7 @@ public class Main {
 
         try {
             sistemaProcessos.distribuirProcessos();
+            System.out.println("Processos distribuidos");
         } catch (ProcessoSemJuizException e) {
             System.out.println(e.getMessage());
         }

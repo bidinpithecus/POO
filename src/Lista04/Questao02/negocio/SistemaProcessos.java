@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Random;
 
 public class SistemaProcessos {
-    private List<Processo> listaProcessos = new ArrayList<>();
-    private List<Juiz> listaJuizes = new ArrayList<>();
+    private final List<Processo> listaProcessos = new ArrayList<>();
+    private final List<Juiz> listaJuizes = new ArrayList<>();
     Random random = new Random();
 
     public void cadastarProcesso(Processo processo) {
@@ -31,9 +31,9 @@ public class SistemaProcessos {
         }
 
         for (Processo processo : auxProcessos) {
-            if (livres.size() > 0) {
-                Random random = new Random();
-                Juiz juiz = livres.get(random.nextInt(livres.size()));
+            if (!livres.isEmpty()) {
+                int rValue = random.nextInt(livres.size());
+                Juiz juiz = livres.get(rValue);
 
                 juiz.cadastrarProcesso(processo);
                 listaProcessos.remove(processo);
